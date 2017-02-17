@@ -60,6 +60,8 @@ class CoreBluetoothMetadata(object):
         """
         try:
             with self._lock:
+                if cbobjects is None:
+                    return []
                 return [self._metadata[x] for x in cbobjects]
         except KeyError:
             # Note that if this error gets thrown then the assumption that OSX
